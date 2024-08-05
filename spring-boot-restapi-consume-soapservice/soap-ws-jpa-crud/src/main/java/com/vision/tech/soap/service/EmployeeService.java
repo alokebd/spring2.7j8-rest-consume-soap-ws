@@ -1,5 +1,7 @@
 package com.vision.tech.soap.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +37,11 @@ public class EmployeeService implements IEmployeeService {
 	public void deleteEmployee(long employeeId) {
 		employeeRepository.deleteById(employeeId);
 
+	}
+
+	@Override
+	public List<Employee> getAllEmployee() {
+		return employeeRepository.findAll();
 	}
 
 }

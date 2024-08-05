@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"employeeInfo\":{\r\n    \"employeeId\": 1002,\r\n    \"name\" : \"James\",\r\n    \"department\" : \"QA\",\r\n    \"phone\": \"647-405-4545\",\r\n    \"address\": \"123 Shapperd Road E, Scarborough, ON, CA.\"\r\n   }\r\n}",
+					"raw": "{\r\n   \"employeeInfo\":{\r\n    \"employeeId\": 1003,\r\n    \"name\" : \"Richard\",\r\n    \"department\" : \"Management\",\r\n    \"phone\": \"647-405-4545\",\r\n    \"address\": \"123 Shapperd Road E, Scarborough, ON, CA.\"\r\n   }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"employeeInfo\":{\r\n    \"employeeId\": 1001,\r\n    \"name\" : \"Alex\",\r\n    \"department\" : \"DEV\",\r\n    \"phone\": \"416-286-3799\",\r\n    \"address\": \"120 York Drive, Toronto, On, CA.\"\r\n   }\r\n}",
+					"raw": "{\r\n   \"employeeInfo\":{\r\n    \"employeeId\": 1003,\r\n    \"name\" : \"Richi\",\r\n    \"department\" : \"DEV\",\r\n    \"phone\": \"416-286-3799\",\r\n    \"address\": \"120 York Drive, Toronto, On, CA.\"\r\n   }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -74,7 +74,40 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"employeeId\": 1001\r\n}",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/employees/1003",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"employees",
+						"1003"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Employees",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -97,13 +130,13 @@
 			"response": []
 		},
 		{
-			"name": "Remove Employee Id",
+			"name": "Remove Employee  By Id",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"employeeId\": 1002\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,7 +144,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9090/api/employees",
+					"raw": "http://localhost:9090/api/employees/1002",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -119,7 +152,8 @@
 					"port": "9090",
 					"path": [
 						"api",
-						"employees"
+						"employees",
+						"1002"
 					]
 				}
 			},

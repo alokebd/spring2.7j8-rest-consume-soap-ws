@@ -1,5 +1,7 @@
 package com.vision.tech.soap.service;
 
+import java.util.List;
+
 import com.vision.tech.soap.entities.Employee;
 
 public interface IEmployeeService {
@@ -10,4 +12,5 @@ public interface IEmployeeService {
 	void updateEmployee(Employee employee);
 
 	void deleteEmployee(long employeeId);
+	List<Employee> getAllEmployee();
 }

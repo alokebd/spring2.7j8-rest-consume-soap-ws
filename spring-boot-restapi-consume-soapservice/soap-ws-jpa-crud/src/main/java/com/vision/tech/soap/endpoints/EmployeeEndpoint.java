@@ -1,5 +1,7 @@
 package com.vision.tech.soap.endpoints;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -42,7 +44,8 @@ public class EmployeeEndpoint {
 		response.setEmployeeInfo(employeeInfo);
 		return response;
 	}
-
+	
+	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateEmployeeRequest")
 	@ResponsePayload
 	public UpdateEmployeeResponse updateEmployee(@RequestPayload UpdateEmployeeRequest request) {
@@ -69,5 +72,20 @@ public class EmployeeEndpoint {
 		response.setServiceStatus(serviceStatus);
 		return response;
 	}
+	
+	
+	@PayloadRoot(namespace=NAMESPACE_URI, localPart = "GetAllEmployeeRequest")
+	@ResponsePayload
+	public GetAllEmployeeResponse getAllEmployees(@RequestPayload GetAllEmployeeRequest request) {
+		List<Employee> list = employeeService.getAllEmployee();
+		GetAllEmployeeResponse response = new GetAllEmployeeResponse();
+		for (Employee employeeEntity : list) {
+			EmployeeInfo employeeInfo = new EmployeeInfo();
+			BeanUtils.copyProperties(employeeEntity, employeeInfo);
+			response.getEmployeeInfo().add(employeeInfo);
+		}
+		return response;
+	}
+
 
 }

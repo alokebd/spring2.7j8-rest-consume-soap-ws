@@ -51,7 +51,19 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
+	<xsd:element name="GetAllEmployeeRequest">
+		<xsd:complexType>
+		</xsd:complexType>
+	</xsd:element>
 
+	<xsd:element name="GetAllEmployeeResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="employeeInfo" type="tns:employeeInfo"
+					maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
 	<xsd:element name="updateEmployeeRequest">
 		<xsd:complexType>
 			<xsd:sequence>

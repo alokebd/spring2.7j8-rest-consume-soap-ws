@@ -15,7 +15,13 @@ import org.springframework.xml.xsd.XsdSchema;
 @EnableWs
 @Configuration
 public class WebServiceConfiguration extends WsConfigurerAdapter {
-
+	
+	/**
+	 * Application DispatcherServlet for application communication. The WSDL URL (http://localhost:2026/visionService/employees.wsdl) and 
+	 * REST API base URL (http://localhost:2026/visionService/).
+	 * @param applicationContext
+	 * @return
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Bean
 	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
@@ -24,7 +30,7 @@ public class WebServiceConfiguration extends WsConfigurerAdapter {
 		servlet.setTransformWsdlLocations(true);
 		return new ServletRegistrationBean(servlet, "/visionService/*");
 	}
-
+	
 	@Bean(name = "employees")
 	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema employeeSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -38,6 +44,10 @@ public class WebServiceConfiguration extends WsConfigurerAdapter {
 	
 	
 	
+	/**
+	 * To genarate wsdl form supplied xsd 
+	 * @return XsdSchema
+	 */
 	@Bean
 	public XsdSchema employeeSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("employee.xsd"));

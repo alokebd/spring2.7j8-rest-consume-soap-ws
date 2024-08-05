@@ -23,9 +23,6 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="employeeId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
- *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -34,28 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "employeeId"
-})
-@XmlRootElement(name = "getEmployeeByIdRequest")
-public class GetEmployeeByIdRequest {
+@XmlType(name = "")
+@XmlRootElement(name = "GetAllEmployeeRequest")
+public class GetAllEmployeeRequest {
 
-    protected long employeeId;
-
-    /**
-     * Gets the value of the employeeId property.
-     * 
-     */
-    public long getEmployeeId() {
-        return employeeId;
-    }
-
-    /**
-     * Sets the value of the employeeId property.
-     * 
-     */
-    public void setEmployeeId(long value) {
-        this.employeeId = value;
-    }
 
 }

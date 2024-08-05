@@ -10,7 +10,6 @@ package com.vision.tech.soap.employees;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -24,9 +23,6 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="employeeInfo" type="{http://www.tech.vision.com/soap/employees}employeeInfo"/>
- *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -35,37 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "employeeInfo"
-})
-@XmlRootElement(name = "getEmployeeResponse")
-public class GetEmployeeResponse {
+@XmlType(name = "")
+@XmlRootElement(name = "GetAllEmployeeRequest")
+public class GetAllEmployeeRequest {
 
-    @XmlElement(required = true)
-    protected EmployeeInfo employeeInfo;
-
-    /**
-     * Gets the value of the employeeInfo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EmployeeInfo }
-     *     
-     */
-    public EmployeeInfo getEmployeeInfo() {
-        return employeeInfo;
-    }
-
-    /**
-     * Sets the value of the employeeInfo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EmployeeInfo }
-     *     
-     */
-    public void setEmployeeInfo(EmployeeInfo value) {
-        this.employeeInfo = value;
-    }
 
 }

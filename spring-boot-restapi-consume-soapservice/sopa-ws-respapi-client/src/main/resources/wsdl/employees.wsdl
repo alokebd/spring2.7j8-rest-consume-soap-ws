@@ -56,6 +56,18 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
+			<xsd:element name="GetAllEmployeeRequest">
+				<xsd:complexType>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="GetAllEmployeeResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" name="employeeInfo"
+							type="tns:employeeInfo" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
 			<xsd:element name="updateEmployeeRequest">
 				<xsd:complexType>
 					<xsd:sequence>
@@ -129,6 +141,16 @@
 			name="getEmployeeResponse">
 		</wsdl:part>
 	</wsdl:message>
+	<wsdl:message name="GetAllEmployeeResponse">
+		<wsdl:part element="tns:GetAllEmployeeResponse"
+			name="GetAllEmployeeResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetAllEmployeeRequest">
+		<wsdl:part element="tns:GetAllEmployeeRequest"
+			name="GetAllEmployeeRequest">
+		</wsdl:part>
+	</wsdl:message>
 	<wsdl:portType name="visionServiceSoapHttp">
 		<wsdl:operation name="getEmployeeById">
 			<wsdl:input message="tns:getEmployeeByIdRequest"
@@ -162,6 +184,14 @@
 		<wsdl:operation name="getEmployee">
 			<wsdl:output message="tns:getEmployeeResponse"
 				name="getEmployeeResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetAllEmployee">
+			<wsdl:input message="tns:GetAllEmployeeRequest"
+				name="GetAllEmployeeRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:GetAllEmployeeResponse"
+				name="GetAllEmployeeResponse">
 			</wsdl:output>
 		</wsdl:operation>
 	</wsdl:portType>
@@ -205,6 +235,15 @@
 		<wsdl:operation name="getEmployee">
 			<soap:operation soapAction="" />
 			<wsdl:output name="getEmployeeResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetAllEmployee">
+			<soap:operation soapAction="" />
+			<wsdl:input name="GetAllEmployeeRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetAllEmployeeResponse">
 				<soap:body use="literal" />
 			</wsdl:output>
 		</wsdl:operation>
