@@ -1,0 +1,14 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:getEmployeeResponse xmlns:ns2="http://www.tech.vision.com/soap/employees">
+         <ns2:employeeInfo>
+            <ns2:employeeId>1</ns2:employeeId>
+            <ns2:name>James</ns2:name>
+            <ns2:department>QA</ns2:department>
+            <ns2:phone>647-256-1111</ns2:phone>
+            <ns2:address>399 FFF</ns2:address>
+         </ns2:employeeInfo>
+      </ns2:getEmployeeResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,11 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:updateEmployeeResponse xmlns:ns2="http://www.tech.vision.com/soap/employees">
+         <ns2:serviceStatus>
+            <ns2:status>SUCCESS</ns2:status>
+            <ns2:message>Content Updated Successfully</ns2:message>
+         </ns2:serviceStatus>
+      </ns2:updateEmployeeResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
