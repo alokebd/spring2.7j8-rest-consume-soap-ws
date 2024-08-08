@@ -5,7 +5,7 @@ import java.util.List;
 import com.vision.tech.soap.entities.Employee;
 
 public interface IEmployeeService {
-	void AddEmployee(Employee employee);
+	void addEmployee(Employee employee);
 
 	Employee getEmployeeById(long employeeId);
 

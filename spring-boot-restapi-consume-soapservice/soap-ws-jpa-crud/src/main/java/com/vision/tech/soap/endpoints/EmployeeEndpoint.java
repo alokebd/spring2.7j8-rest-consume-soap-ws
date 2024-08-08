@@ -28,7 +28,7 @@ public class EmployeeEndpoint {
 
 		Employee employee = new Employee();
 		BeanUtils.copyProperties(request.getEmployeeInfo(), employee);
-		employeeService.AddEmployee(employee);
+		employeeService.addEmployee(employee);
 		serviceStatus.setStatus("SUCCESS");
  	    serviceStatus.setMessage("Content Added Successfully");
 		response.setServiceStatus(serviceStatus);

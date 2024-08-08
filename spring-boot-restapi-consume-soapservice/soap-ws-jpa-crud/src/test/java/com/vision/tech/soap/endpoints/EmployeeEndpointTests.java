@@ -1,17 +1,15 @@
 package com.vision.tech.soap.endpoints;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.BeanUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.webservices.server.WebServiceServerTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.ws.test.server.MockWebServiceClient;
 import org.springframework.xml.transform.StringSource;
-import com.vision.tech.soap.employees.AddEmployeeRequest;
-import com.vision.tech.soap.employees.EmployeeInfo;
-import com.vision.tech.soap.employees.UpdateEmployeeRequest;
 import com.vision.tech.soap.entities.Employee;
 import com.vision.tech.soap.repo.EmployeeRepository;
+import com.vision.tech.soap.testutils.EmployeeTestUtils;
 import javax.xml.transform.Source;
 import static org.springframework.ws.test.server.RequestCreators.withPayload;
 import static org.springframework.ws.test.server.ResponseMatchers.payload;
@@ -27,18 +25,25 @@ import static org.springframework.ws.test.server.ResponseMatchers.xpath;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.ws.test.server.ResponseMatchers.noFault;
-import static org.springframework.ws.test.server.ResponseMatchers.serverOrReceiverFault;
+
 @WebServiceServerTest
 @ComponentScan("com.vision.tech.soap")
 public class EmployeeEndpointTests {
-	
+
+	@Autowired
+    private MockWebServiceClient client;
+
+    @MockBean
+    private EmployeeRepository employeeRepository;
+    
+    /*
 	private static final Map<String, String> NAMESPACE_REQUEST_MAPPING = createDefaultMapping();
 
 	private static Map<String, String> createDefaultMapping() {
 		Map<String, String> mapping = new HashMap<>();
 		mapping.put("emp", "http://www.tech.vision.com/soap/employees");
 		return mapping;
-	}
+	}*/
 
 	private static final Map<String, String> NAMESPACE_RESPONSE_MAPPING = createNs2Mapping();
 
@@ -47,37 +52,8 @@ public class EmployeeEndpointTests {
 		mapping.put("ns2", "http://www.tech.vision.com/soap/employees");
 		return mapping;
 	}
-	
-	private EmployeeInfo createEmployeeInfo(String name, long id, String department, String phone, String address) {
-		EmployeeInfo info = new EmployeeInfo();
-		info.setName(name);
-		info.setEmployeeId(id);
-		info.setDepartment(department);
-		info.setPhone(phone);
-		info.setAddress(address);
-		return info;
-	}
-	
-	private Employee createEmployee(String name, long id, String department, String phone, String address) {
-		Employee employee = new Employee();
-		AddEmployeeRequest request = new AddEmployeeRequest();
-		EmployeeInfo info = createEmployeeInfo(name, id, department, phone, address);
-		request.setEmployeeInfo(info);
-		BeanUtils.copyProperties(request.getEmployeeInfo(), employee);
-		return employee;
-	}
-
-	private Employee updateEmployee(String name, long id, String department, String phone, String address) {
-		Employee employee = new Employee();
-		UpdateEmployeeRequest request = new UpdateEmployeeRequest();
-		EmployeeInfo info = createEmployeeInfo(name, id, department, phone, address);
-		request.setEmployeeInfo(info);
-		BeanUtils.copyProperties(request.getEmployeeInfo(), employee);
-		return employee;
-	}
-			
+					
 	private Source getRequestPayloadByOperation(String oprationName, String name, long id, String department, String phone, String address) {
-		//addEmployeeRequest
 		Source requestPayload = new StringSource(
 			      "<emp:"+oprationName
 			      + " xmlns:emp=\"http://www.tech.vision.com/soap/employees\">"
@@ -113,11 +89,6 @@ public class EmployeeEndpointTests {
 		 return responsePayload;
 	}
 	
-	@Autowired
-    private MockWebServiceClient client;
-
-    @MockBean
-    private EmployeeRepository employeeRepository;
 	
 	@Test
 	public void test_1_add_employee() {
@@ -133,7 +104,7 @@ public class EmployeeEndpointTests {
 		String responseOperation = "addEmployeeResponse";
 		Source responsePayload = getSingleSuccessResponseByOprationPayload(responseOperation, "SUCCESS", "Content Added Successfully");
 
-		Employee employee = createEmployee(name, employeeId, department, phone, address);
+		Employee employee = EmployeeTestUtils.createEmployee(name, employeeId, department, phone, address);
 		// When
 
 		when(employeeRepository.save(employee)).thenReturn(employee);
@@ -154,7 +125,7 @@ public class EmployeeEndpointTests {
     	String address = "399 FFF";
     	String requestOperation = "addEmployeeRequest";
 		Source requestPayload = getRequestPayloadByOperation(requestOperation, name, employeeId, department, phone, address);
-		Employee employee = createEmployee(name, employeeId, department, phone, address);
+		Employee employee = EmployeeTestUtils.createEmployee(name, employeeId, department, phone, address);
 		// When
 		when(employeeRepository.save(employee)).thenReturn(employee);
 		//Then
@@ -224,9 +195,9 @@ public class EmployeeEndpointTests {
 		           + "</ns2:employeeInfo>"
 		           + "</ns2:GetAllEmployeeResponse>");
 		 
-		  Employee employee  = createEmployee(name_1, employeeId_1, department_1, phone_1, address_1);
+		  Employee employee  = EmployeeTestUtils.createEmployee(name_1, employeeId_1, department_1, phone_1, address_1);
 		  
-	      Employee employee2 = createEmployee(name_2, employeeId_2, department_2, phone_2, address_2);
+	      Employee employee2 = EmployeeTestUtils.createEmployee(name_2, employeeId_2, department_2, phone_2, address_2);
 	      List<Employee> employees = new ArrayList<Employee>();
 		  employees.add(employee);
 		  employees.add(employee2);
@@ -254,7 +225,7 @@ public class EmployeeEndpointTests {
      	String department ="QA";
      	String phone = "647-256-1111";
      	String address = "399 FFF";
-    	Employee employee = createEmployee(name, employeeId, department, phone, address);
+    	Employee employee = EmployeeTestUtils.createEmployee(name, employeeId, department, phone, address);
     	
 		// When
 		when(employeeRepository.save(employee)).thenReturn(employee);
@@ -266,7 +237,7 @@ public class EmployeeEndpointTests {
 		
 		String updated_name = "Test";
      	String updated_department ="Test";
- 		Employee updatedEmplyee = updateEmployee(updated_name, employeeId, updated_department, phone, address);
+ 		Employee updatedEmplyee = EmployeeTestUtils.updateEmployee(updated_name, employeeId, updated_department, phone, address);
 		
 		// Given
     	String updatedOperation = "updateEmployeeRequest";
@@ -293,7 +264,7 @@ public class EmployeeEndpointTests {
     	String department ="QA";
     	String phone = "647-256-1111";
     	String address = "399 FFF";
-       	Employee employee = createEmployee(name, employeeId, department, phone, address);
+       	Employee employee = EmployeeTestUtils.createEmployee(name, employeeId, department, phone, address);
        	
    		// When
    		when(employeeRepository.save(employee)).thenReturn(employee);
