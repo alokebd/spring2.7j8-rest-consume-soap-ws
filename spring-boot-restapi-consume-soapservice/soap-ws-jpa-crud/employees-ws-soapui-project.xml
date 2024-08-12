@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="d0758788-1d47-474f-983d-ab434733a6a5" activeEnvironment="Default" name="employees-ws" resourceRoot="" soapui-version="5.7.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="d00f4285-0423-4e06-ac7f-462ff34ab2b0" wsaVersion="NONE" name="visionServiceSoapHttpSoap11" type="wsdl" bindingName="{http://www.tech.vision.com/soap/employees}visionServiceSoapHttpSoap11" soapVersion="1_1" anonymous="optional" definition="file:/C:/Porjects/localRepo.vision.tech/spring2.7j8-rest-consume-soap-ws/spring-boot-respapi-consume-soapservice/sopa-ws-respapi-client/src/main/resources/wsdl/employees.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Porjects\localRepo.vision.tech\spring2.7j8-rest-consume-soap-ws\spring-boot-respapi-consume-soapservice\sopa-ws-respapi-client\src\main\resources\wsdl\employees.wsdl"><con:part><con:url>file:\C:\Porjects\localRepo.vision.tech\spring2.7j8-rest-consume-soap-ws\spring-boot-respapi-consume-soapservice\sopa-ws-respapi-client\src\main\resources\wsdl\employees.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.tech.vision.com/soap/employees" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.tech.vision.com/soap/employees" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.tech.vision.com/soap/employees">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.tech.vision.com/soap/employees" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:complexType name="employeeInfo">
+        <xsd:sequence>
+          <xsd:element name="employeeId" type="xsd:long"/>
+          <xsd:element name="name" type="xsd:string"/>
+          <xsd:element name="department" type="xsd:string"/>
+          <xsd:element name="phone" type="xsd:string"/>
+          <xsd:element name="address" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="serviceStatus">
+        <xsd:sequence>
+          <xsd:element name="status" type="xsd:string"/>
+          <xsd:element name="message" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="addEmployeeRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="employeeInfo" type="tns:employeeInfo"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addEmployeeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xsd:element name="employeeInfo" type="tns:employeeInfo"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getEmployeeByIdRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="employeeId" type="xsd:long"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getEmployeeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="employeeInfo" type="tns:employeeInfo"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateEmployeeRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="employeeInfo" type="tns:employeeInfo"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateEmployeeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteEmployeeRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="employeeId" type="xsd:long"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteEmployeeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getEmployeeByIdRequest">
+    <wsdl:part element="tns:getEmployeeByIdRequest" name="getEmployeeByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteEmployeeRequest">
+    <wsdl:part element="tns:deleteEmployeeRequest" name="deleteEmployeeRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEmployeeRequest">
+    <wsdl:part element="tns:addEmployeeRequest" name="addEmployeeRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteEmployeeResponse">
+    <wsdl:part element="tns:deleteEmployeeResponse" name="deleteEmployeeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateEmployeeRequest">
+    <wsdl:part element="tns:updateEmployeeRequest" name="updateEmployeeRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateEmployeeResponse">
+    <wsdl:part element="tns:updateEmployeeResponse" name="updateEmployeeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEmployeeResponse">
+    <wsdl:part element="tns:addEmployeeResponse" name="addEmployeeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmployeeResponse">
+    <wsdl:part element="tns:getEmployeeResponse" name="getEmployeeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="visionServiceSoapHttp">
+    <wsdl:operation name="getEmployeeById">
+      <wsdl:input message="tns:getEmployeeByIdRequest" name="getEmployeeByIdRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteEmployee">
+      <wsdl:input message="tns:deleteEmployeeRequest" name="deleteEmployeeRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteEmployeeResponse" name="deleteEmployeeResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addEmployee">
+      <wsdl:input message="tns:addEmployeeRequest" name="addEmployeeRequest"></wsdl:input>
+      <wsdl:output message="tns:addEmployeeResponse" name="addEmployeeResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEmployee">
+      <wsdl:input message="tns:updateEmployeeRequest" name="updateEmployeeRequest"></wsdl:input>
+      <wsdl:output message="tns:updateEmployeeResponse" name="updateEmployeeResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployee">
+      <wsdl:output message="tns:getEmployeeResponse" name="getEmployeeResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="visionServiceSoapHttpSoap11" type="tns:visionServiceSoapHttp">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getEmployeeById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getEmployeeByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteEmployee">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteEmployeeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteEmployeeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addEmployee">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addEmployeeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addEmployeeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEmployee">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateEmployeeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateEmployeeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployee">
+      <soap:operation soapAction=""/>
+      <wsdl:output name="getEmployeeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="visionServiceSoapHttpService">
+    <wsdl:port binding="tns:visionServiceSoapHttpSoap11" name="visionServiceSoapHttpSoap11">
+      <soap:address location="http://localhost:2026/visionService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:2026/visionService</con:endpoint></con:endpoints><con:operation id="5aaff13a-83d0-48a0-8611-d6e50e68b63c" isOneWay="false" action="" name="addEmployee" bindingOperationName="addEmployee" type="Request-Response" outputName="addEmployeeResponse" inputName="addEmployeeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="07cbae00-b56d-4a4c-a059-eb38aa40d1bd" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:2026/visionService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.tech.vision.com/soap/employees">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <emp:addEmployeeRequest>\r
+         <emp:employeeInfo>\r
+            <emp:employeeId>?</emp:employeeId>\r
+            <emp:name>?</emp:name>\r
+            <emp:department>?</emp:department>\r
+            <emp:phone>?</emp:phone>\r
+            <emp:address>?</emp:address>\r
+         </emp:employeeInfo>\r
+      </emp:addEmployeeRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.tech.vision.com/soap/employees/visionServiceSoapHttp/addEmployeeRequest"/></con:call></con:operation><con:operation id="7937d5c3-c51b-4962-8d67-33d24cd15f49" isOneWay="false" action="" name="deleteEmployee" bindingOperationName="deleteEmployee" type="Request-Response" outputName="deleteEmployeeResponse" inputName="deleteEmployeeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="98f303ad-1e8c-400e-83ff-72cced1c48a9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:2026/visionService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.tech.vision.com/soap/employees">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <emp:deleteEmployeeRequest>\r
+         <emp:employeeId>?</emp:employeeId>\r
+      </emp:deleteEmployeeRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.tech.vision.com/soap/employees/visionServiceSoapHttp/deleteEmployeeRequest"/></con:call></con:operation><con:operation id="b19d06de-105f-440d-a955-665b80e909c5" isOneWay="false" action="" name="getEmployee" bindingOperationName="getEmployee" type="Notification" outputName="getEmployeeResponse" inputName="" receivesAttachments="false" anonymous="optional"><con:settings/><con:call id="dcff771e-3ff4-4651-aa63-06126264eaae" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:2026/visionService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.tech.vision.com/soap/employees">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <emp:getEmployeeResponse>\r
+         <emp:employeeInfo>\r
+            <emp:employeeId>?</emp:employeeId>\r
+            <emp:name>?</emp:name>\r
+            <emp:department>?</emp:department>\r
+            <emp:phone>?</emp:phone>\r
+            <emp:address>?</emp:address>\r
+         </emp:employeeInfo>\r
+      </emp:getEmployeeResponse>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508"/></con:call></con:operation><con:operation id="11c4b314-80a1-41ba-ae86-83f21df68408" isOneWay="false" action="" name="getEmployeeById" bindingOperationName="getEmployeeById" type="One-Way" inputName="getEmployeeByIdRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="abc7d1fc-4fa8-4f2c-9944-52dd06e30bc5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:2026/visionService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.tech.vision.com/soap/employees">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <emp:getEmployeeByIdRequest>\r
+         <emp:employeeId>?</emp:employeeId>\r
+      </emp:getEmployeeByIdRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.tech.vision.com/soap/employees/visionServiceSoapHttp/getEmployeeByIdRequest"/></con:call></con:operation><con:operation id="e82533a7-fedb-4397-a3dd-b0d299e6e107" isOneWay="false" action="" name="updateEmployee" bindingOperationName="updateEmployee" type="Request-Response" outputName="updateEmployeeResponse" inputName="updateEmployeeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="870dc47a-20e4-41ec-aaeb-fbdfdd2ea142" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:2026/visionService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.tech.vision.com/soap/employees">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <emp:updateEmployeeRequest>\r
+         <emp:employeeInfo>\r
+            <emp:employeeId>?</emp:employeeId>\r
+            <emp:name>?</emp:name>\r
+            <emp:department>?</emp:department>\r
+            <emp:phone>?</emp:phone>\r
+            <emp:address>?</emp:address>\r
+         </emp:employeeInfo>\r
+      </emp:updateEmployeeRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.tech.vision.com/soap/employees/visionServiceSoapHttp/updateEmployeeRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

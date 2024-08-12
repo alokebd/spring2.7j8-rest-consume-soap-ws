@@ -1,0 +1,14 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.tech.vision.com/soap/employees">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <emp:updateEmployeeRequest>
+         <emp:employeeInfo>
+            <emp:employeeId>1</emp:employeeId>
+            <emp:name>xxxx</emp:name>
+            <emp:department>xx</emp:department>
+            <emp:phone>x</emp:phone>
+            <emp:address>x</emp:address>
+         </emp:employeeInfo>
+      </emp:updateEmployeeRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

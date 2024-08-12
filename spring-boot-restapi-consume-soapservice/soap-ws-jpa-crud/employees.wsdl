@@ -1,0 +1,258 @@
+<wsdl:definitions
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:sch="http://www.tech.vision.com/soap/employees"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.tech.vision.com/soap/employees"
+	targetNamespace="http://www.tech.vision.com/soap/employees">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified"
+			targetNamespace="http://www.tech.vision.com/soap/employees">
+			<xsd:complexType name="employeeInfo">
+				<xsd:sequence>
+					<xsd:element name="employeeId" type="xsd:long" />
+					<xsd:element name="name" type="xsd:string" />
+					<xsd:element name="department" type="xsd:string" />
+					<xsd:element name="phone" type="xsd:string" />
+					<xsd:element name="address" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="serviceStatus">
+				<xsd:sequence>
+					<xsd:element name="status" type="xsd:string" />
+					<xsd:element name="message" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="addEmployeeRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="employeeInfo"
+							type="tns:employeeInfo" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="addEmployeeResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+						<xsd:element name="employeeInfo"
+							type="tns:employeeInfo" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getEmployeeByIdRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="employeeId" type="xsd:long" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getEmployeeResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="employeeInfo"
+							type="tns:employeeInfo" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="GetAllEmployeeRequest">
+				<xsd:complexType>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="GetAllEmployeeResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" name="employeeInfo"
+							type="tns:employeeInfo" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateEmployeeRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="employeeInfo"
+							type="tns:employeeInfo" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateEmployeeResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="deleteEmployeeRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="employeeId" type="xsd:long" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="deleteEmployeeResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="getEmployeeByIdRequest">
+		<wsdl:part element="tns:getEmployeeByIdRequest"
+			name="getEmployeeByIdRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="deleteEmployeeRequest">
+		<wsdl:part element="tns:deleteEmployeeRequest"
+			name="deleteEmployeeRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addEmployeeRequest">
+		<wsdl:part element="tns:addEmployeeRequest"
+			name="addEmployeeRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="deleteEmployeeResponse">
+		<wsdl:part element="tns:deleteEmployeeResponse"
+			name="deleteEmployeeResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateEmployeeRequest">
+		<wsdl:part element="tns:updateEmployeeRequest"
+			name="updateEmployeeRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateEmployeeResponse">
+		<wsdl:part element="tns:updateEmployeeResponse"
+			name="updateEmployeeResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addEmployeeResponse">
+		<wsdl:part element="tns:addEmployeeResponse"
+			name="addEmployeeResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getEmployeeResponse">
+		<wsdl:part element="tns:getEmployeeResponse"
+			name="getEmployeeResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetAllEmployeeResponse">
+		<wsdl:part element="tns:GetAllEmployeeResponse"
+			name="GetAllEmployeeResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetAllEmployeeRequest">
+		<wsdl:part element="tns:GetAllEmployeeRequest"
+			name="GetAllEmployeeRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="visionServiceSoapHttp">
+		<wsdl:operation name="getEmployeeById">
+			<wsdl:input message="tns:getEmployeeByIdRequest"
+				name="getEmployeeByIdRequest">
+			</wsdl:input>
+		</wsdl:operation>
+		<wsdl:operation name="deleteEmployee">
+			<wsdl:input message="tns:deleteEmployeeRequest"
+				name="deleteEmployeeRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:deleteEmployeeResponse"
+				name="deleteEmployeeResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addEmployee">
+			<wsdl:input message="tns:addEmployeeRequest"
+				name="addEmployeeRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:addEmployeeResponse"
+				name="addEmployeeResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateEmployee">
+			<wsdl:input message="tns:updateEmployeeRequest"
+				name="updateEmployeeRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:updateEmployeeResponse"
+				name="updateEmployeeResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getEmployee">
+			<wsdl:output message="tns:getEmployeeResponse"
+				name="getEmployeeResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetAllEmployee">
+			<wsdl:input message="tns:GetAllEmployeeRequest"
+				name="GetAllEmployeeRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:GetAllEmployeeResponse"
+				name="GetAllEmployeeResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="visionServiceSoapHttpSoap11"
+		type="tns:visionServiceSoapHttp">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getEmployeeById">
+			<soap:operation soapAction="" />
+			<wsdl:input name="getEmployeeByIdRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+		</wsdl:operation>
+		<wsdl:operation name="deleteEmployee">
+			<soap:operation soapAction="" />
+			<wsdl:input name="deleteEmployeeRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="deleteEmployeeResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addEmployee">
+			<soap:operation soapAction="" />
+			<wsdl:input name="addEmployeeRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="addEmployeeResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateEmployee">
+			<soap:operation soapAction="" />
+			<wsdl:input name="updateEmployeeRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateEmployeeResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getEmployee">
+			<soap:operation soapAction="" />
+			<wsdl:output name="getEmployeeResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetAllEmployee">
+			<soap:operation soapAction="" />
+			<wsdl:input name="GetAllEmployeeRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetAllEmployeeResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="visionServiceSoapHttpService">
+		<wsdl:port binding="tns:visionServiceSoapHttpSoap11"
+			name="visionServiceSoapHttpSoap11">
+			<soap:address
+				location="http://localhost:2026/visionService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
